@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="fd9a3d9f-67bc-49ff-890a-5d2dd1cf97aa" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="flow-subflowFlow" doc:id="32210b6a-6b54-46aa-ab33-5d71afa3338c" >
+		<http:listener doc:name="Listener" doc:id="87822e89-cf46-42ab-a554-92030aeeac55" path="/flow" config-ref="HTTP_Listener_config"/>
+		<logger level="INFO" doc:name="Logger" doc:id="040c239d-a774-4a59-aef7-ae2a33a6bf81" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="6e7f6a2d-e8b0-4477-b06b-ebe40e7e34cb" message='"2nd logger"'/>
+		<logger level="INFO" doc:name="Logger" doc:id="a8f9bd2e-75e4-4887-8357-7b12789ed8f6" message='"3rd logger"'/>
+		<flow-ref doc:name="flow-subflowSub_Flow" doc:id="5bd4010a-796c-4c24-b6de-a89bda262738" name="flow-subflowSub_Flow"/>
+	</flow>
+	<sub-flow name="flow-subflowSub_Flow" doc:id="89783dd2-5edd-4361-ba3d-6598142dd147" >
+		<logger level="INFO" doc:name="Logger" doc:id="9c840af7-09cf-4b31-a032-a184fa191c13" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="f62db163-1cd9-4ef4-bec0-a0a774e96c01" message='"subflow-logger1"'/>
+		<logger level="INFO" doc:name="Logger" doc:id="7d376211-498b-4b7c-9430-2d33f63fbd1a" message='"subflow-logger2"'/>
+		<flow-ref doc:name="subflow-callSub_Flow" doc:id="adc92c57-7d8d-4d8b-8ced-4600379217eb" name="subflow-callSub_Flow"/>
+	</sub-flow>
+</mule>

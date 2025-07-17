@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<sub-flow name="subflow-callSub_Flow" doc:id="cb4931b9-9faa-4aa8-8407-ea179cb058e9" >
+		<logger level="INFO" doc:name="Logger" doc:id="14d996a5-b07d-44c1-8f4d-b15dccd2a7a0" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="3ffee615-9f94-4a56-865f-6c6a97fe16c0" message='"3rd subflow end"'/>
+	</sub-flow>
+</mule>
